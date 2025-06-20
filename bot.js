@@ -85,7 +85,7 @@ function initializeChatbot() {
 
 // Send quick link message
 function sendQuickLink(message) {
-  const chatbotomnput = document.getElementById('chatbotInput');
+  const chatbotInput = document.getElementById('chatbotInput');
   chatbotInput.value = message;
   sendChatbotMessage();
 }
