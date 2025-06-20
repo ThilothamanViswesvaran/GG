@@ -92,7 +92,7 @@ async def scrape_and_process(urls: List[str]) -> FAISS:
     """Scrape and process website content into vector store"""
     print(f"Scraping {len(urls)} URLs...")
     loader = AsyncHtmlLoader(urls)
-    docs = loader.load()
+    docs = await loader.load()
     
     html2text = Html2TextTransformer()
     docs_transformed = html2text.transform_documents(docs)
