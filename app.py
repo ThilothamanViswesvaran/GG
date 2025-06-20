@@ -26,7 +26,7 @@ VECTORSTORE_PATH = os.path.join(CACHE_DIR, "faiss_index")
 
 # Set environment variables
 os.environ['USER_AGENT'] = 'UniversityChatbot/1.0 (+https://github.com/yourusername/yourrepo)'
-os.environ['HUGGINGFACEHUB_API_TOKEN'] = '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'  # Replace with your actual token
+os.environ['HUGGINGFACEHUB_API_TOKEN'] = 'your_api_key'  # Replace with your actual token
 
 # Initialize components
 embeddings = None

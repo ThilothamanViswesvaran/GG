@@ -1,6 +1,10 @@
 // Add this to your existing JavaScript
 document.addEventListener('DOMContentLoaded', function () {
   // Prevent event interference with text selection
+  const initialMessage = document.querySelector('.chatbot-body .bot-message');
+    if (initialMessage) {
+        initialMessage.textContent = initialMessage.textContent.trim();
+    }
   document.querySelectorAll('.chat-message').forEach(msg => {
     msg.addEventListener('mousedown', function (e) {
       if (e.target === this || this.contains(e.target)) {
@@ -191,6 +195,59 @@ async function getBotResponse(message) {
     console.error("API Error:", error);
     throw error;
   }
+}
+
+function addMessageToChat(text, isUser) {
+  const messageDiv = document.createElement('div');
+  messageDiv.className = isUser ? 'chat-message user-message' : 'chat-message bot-message';
+  
+  // Use innerHTML only if you trust the source (sanitize if from user input)
+  messageDiv.innerHTML = text;
+  
+  // Make links both clickable and selectable
+  messageDiv.querySelectorAll('a').forEach(link => {
+    link.style.pointerEvents = 'auto';
+    link.style.cursor = 'text';
+  });
+  
+  document.getElementById('chatbotBody').appendChild(messageDiv);
+}
+
+function addMessage(message, isUser = false) {
+    const chatBody = document.getElementById('chatbotBody');
+    const messageDiv = document.createElement('div');
+    messageDiv.className = isUser ? 'chat-message user-message' : 'chat-message bot-message';
+    
+    // Create container for message and copy button
+    const container = document.createElement('div');
+    container.className = 'copy-btn-container';
+    
+    // Add the message content
+    const content = document.createElement('div');
+    content.innerHTML = formatMessage(message);
+    container.appendChild(content);
+    
+    // Add copy button
+    const copyBtn = document.createElement('button');
+    copyBtn.className = 'copy-btn';
+    copyBtn.textContent = 'Copy';
+    copyBtn.onclick = () => {
+        navigator.clipboard.writeText(messageDiv.textContent);
+        copyBtn.textContent = 'Copied!';
+        setTimeout(() => copyBtn.textContent = 'Copy', 2000);
+    };
+    container.appendChild(copyBtn);
+    
+    messageDiv.appendChild(container);
+    chatBody.appendChild(messageDiv);
+    chatBody.scrollTop = chatBody.scrollHeight;
+}
+
+function formatMessage(message) {
+    // Convert bullet points and line breaks
+    return message
+        .replace(/•/g, '<span class="bullet">•</span>')
+        .replace(/\n/g, '<br>');
 }
 
 // Auto-focus input when chatbot opens
