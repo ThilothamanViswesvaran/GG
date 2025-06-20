@@ -15,6 +15,8 @@ from huggingface_hub import login
 import asyncio
 import nest_asyncio
 import uvicorn
+import pytest
+
 from contextlib import asynccontextmanager
 
 # ===== Configuration =====
@@ -27,6 +29,9 @@ VECTORSTORE_PATH = os.path.join(CACHE_DIR, "faiss_index")
 # Set environment variables
 os.environ['USER_AGENT'] = 'UniversityChatbot/1.0 (+https://github.com/yourusername/yourrepo)'
 os.environ['HUGGINGFACEHUB_API_TOKEN'] = 'your_api_key'  # Replace with your actual token
+
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
+
 
 # Initialize components
 embeddings = None
@@ -49,6 +54,26 @@ nest_asyncio.apply()
 
 # ===== Core Application Code =====
 app = FastAPI()
+
+from app import get_all_links
+
+
+def test_get_all_links():
+    urls = get_all_links("https://example.com/")
+    expected = [
+        "https://example.com/",
+        "https://example.com/about-us",
+        "https://example.com/academics",
+        "https://example.com/departments",
+        "https://example.com/admissions",
+        "https://example.com/examinations",
+        "https://example.com/research",
+        "https://example.com/facilities",
+        "https://example.com/contact-us",
+        "https://example.com/news-events",
+    ]
+    assert urls == expected
+
 
 # Updated prompt template with clearer formatting instructions
 prompt_template = """
