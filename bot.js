@@ -6,11 +6,8 @@ document.addEventListener('DOMContentLoaded', function () {
         initialMessage.textContent = initialMessage.textContent.trim();
     }
   document.querySelectorAll('.chat-message').forEach(msg => {
-    msg.addEventListener('mousedown', function (e) {
-      if (e.target === this || this.contains(e.target)) {
-        e.stopPropagation();
-      }
-    });
+    msg.style.userSelect = 'text';
+    msg.style.webkitUserSelect = 'text';
   });
   // Make sure new messages are selectable
   const observer = new MutationObserver(function (mutations) {
