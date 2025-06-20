@@ -1,0 +1,142 @@
+2025-06-18 14:29:19,599 - sentence_transformers.SentenceTransformer - INFO - Use pytorch device_name: cpu
+2025-06-18 14:29:19,599 - sentence_transformers.SentenceTransformer - INFO - Load pretrained SentenceTransformer: sentence-transformers/all-mpnet-base-v2
+2025-06-18 14:29:24,319 - langchain_huggingface.llms.huggingface_endpoint - WARNING - WARNING! stop_sequence is not default parameter.
+                    stop_sequence was transferred to model_kwargs.
+                    Please make sure that stop_sequence is what you intended.
+2025-06-18 14:29:24,402 - faiss.loader - INFO - Loading faiss with AVX512 support.
+2025-06-18 14:29:24,402 - faiss.loader - INFO - Could not load library with AVX512 support due to:
+ModuleNotFoundError("No module named 'faiss.swigfaiss_avx512'")
+2025-06-18 14:29:24,403 - faiss.loader - INFO - Loading faiss with AVX2 support.
+2025-06-18 14:29:24,418 - faiss.loader - INFO - Successfully loaded faiss with AVX2 support.
+2025-06-18 14:29:24,423 - faiss - INFO - Failed to load GPU Faiss: name 'GpuIndexIVFFlat' is not defined. Will not load constructor refs for GPU indexes. This is only an error if you're trying to use GPU Faiss.
+2025-06-18 14:29:35,994 - app - INFO - Processing question: How to contact the university?...
+2025-06-18 14:29:36,078 - app - ERROR - Unexpected error processing question
+Traceback (most recent call last):
+  File "E:\university-chatbot\app.py", line 230, in ask_question
+    result = await asyncio.wait_for(
+             ^^^^^^^^^^^^^^^^^^^^^^^
+    ...<5 lines>...
+    )
+    ^
+  File "C:\Users\edget\AppData\Local\Programs\Python\Python313\Lib\asyncio\tasks.py", line 507, in wait_for
+    return await fut
+           ^^^^^^^^^
+  File "C:\Users\edget\AppData\Local\Programs\Python\Python313\Lib\asyncio\threads.py", line 25, in to_thread
+    return await loop.run_in_executor(None, func_call)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\edget\AppData\Local\Programs\Python\Python313\Lib\asyncio\futures.py", line 286, in __await__
+    yield self  # This tells Task to wait for completion.
+    ^^^^^^^^^^
+  File "C:\Users\edget\AppData\Local\Programs\Python\Python313\Lib\asyncio\tasks.py", line 375, in __wakeup
+    future.result()
+    ~~~~~~~~~~~~~^^
+  File "C:\Users\edget\AppData\Local\Programs\Python\Python313\Lib\asyncio\futures.py", line 199, in result
+    raise self._exception.with_traceback(self._exception_tb)
+  File "C:\Users\edget\AppData\Local\Programs\Python\Python313\Lib\concurrent\futures\thread.py", line 59, in run
+    result = self.fn(*self.args, **self.kwargs)
+  File "C:\Users\edget\AppData\Local\Programs\Python\Python313\Lib\site-packages\langchain\chains\base.py", line 167, in invoke
+    raise e
+  File "C:\Users\edget\AppData\Local\Programs\Python\Python313\Lib\site-packages\langchain\chains\base.py", line 157, in invoke
+    self._call(inputs, run_manager=run_manager)
+    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\edget\AppData\Local\Programs\Python\Python313\Lib\site-packages\langchain\chains\retrieval_qa\base.py", line 154, in _call
+    answer = self.combine_documents_chain.run(
+        input_documents=docs, question=question, callbacks=_run_manager.get_child()
+    )
+  File "C:\Users\edget\AppData\Local\Programs\Python\Python313\Lib\site-packages\langchain_core\_api\deprecation.py", line 191, in warning_emitting_wrapper
+    return wrapped(*args, **kwargs)
+  File "C:\Users\edget\AppData\Local\Programs\Python\Python313\Lib\site-packages\langchain\chains\base.py", line 608, in run
+    return self(kwargs, callbacks=callbacks, tags=tags, metadata=metadata)[
+           ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\edget\AppData\Local\Programs\Python\Python313\Lib\site-packages\langchain_core\_api\deprecation.py", line 191, in warning_emitting_wrapper
+    return wrapped(*args, **kwargs)
+  File "C:\Users\edget\AppData\Local\Programs\Python\Python313\Lib\site-packages\langchain\chains\base.py", line 386, in __call__
+    return self.invoke(
+           ~~~~~~~~~~~^
+        inputs,
+        ^^^^^^^
+    ...<2 lines>...
+        include_run_info=include_run_info,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\edget\AppData\Local\Programs\Python\Python313\Lib\site-packages\langchain\chains\base.py", line 167, in invoke
+    raise e
+  File "C:\Users\edget\AppData\Local\Programs\Python\Python313\Lib\site-packages\langchain\chains\base.py", line 157, in invoke
+    self._call(inputs, run_manager=run_manager)
+    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\edget\AppData\Local\Programs\Python\Python313\Lib\site-packages\langchain\chains\combine_documents\base.py", line 138, in _call
+    output, extra_return_dict = self.combine_docs(
+                                ~~~~~~~~~~~~~~~~~^
+        docs, callbacks=_run_manager.get_child(), **other_keys
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\edget\AppData\Local\Programs\Python\Python313\Lib\site-packages\langchain\chains\combine_documents\stuff.py", line 259, in combine_docs
+    return self.llm_chain.predict(callbacks=callbacks, **inputs), {}
+           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\edget\AppData\Local\Programs\Python\Python313\Lib\site-packages\langchain\chains\llm.py", line 319, in predict
+    return self(kwargs, callbacks=callbacks)[self.output_key]
+           ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\edget\AppData\Local\Programs\Python\Python313\Lib\site-packages\langchain_core\_api\deprecation.py", line 191, in warning_emitting_wrapper
+    return wrapped(*args, **kwargs)
+  File "C:\Users\edget\AppData\Local\Programs\Python\Python313\Lib\site-packages\langchain\chains\base.py", line 386, in __call__
+    return self.invoke(
+           ~~~~~~~~~~~^
+        inputs,
+        ^^^^^^^
+    ...<2 lines>...
+        include_run_info=include_run_info,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\edget\AppData\Local\Programs\Python\Python313\Lib\site-packages\langchain\chains\base.py", line 167, in invoke
+    raise e
+  File "C:\Users\edget\AppData\Local\Programs\Python\Python313\Lib\site-packages\langchain\chains\base.py", line 157, in invoke
+    self._call(inputs, run_manager=run_manager)
+    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\edget\AppData\Local\Programs\Python\Python313\Lib\site-packages\langchain\chains\llm.py", line 127, in _call
+    response = self.generate([inputs], run_manager=run_manager)
+  File "C:\Users\edget\AppData\Local\Programs\Python\Python313\Lib\site-packages\langchain\chains\llm.py", line 139, in generate
+    return self.llm.generate_prompt(
+           ~~~~~~~~~~~~~~~~~~~~~~~~^
+        prompts,
+        ^^^^^^^^
+    ...<2 lines>...
+        **self.llm_kwargs,
+        ^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\edget\AppData\Local\Programs\Python\Python313\Lib\site-packages\langchain_core\language_models\llms.py", line 766, in generate_prompt
+    return self.generate(prompt_strings, stop=stop, callbacks=callbacks, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\edget\AppData\Local\Programs\Python\Python313\Lib\site-packages\langchain_core\language_models\llms.py", line 973, in generate
+    return self._generate_helper(
+           ~~~~~~~~~~~~~~~~~~~~~^
+        prompts,
+        ^^^^^^^^
+    ...<3 lines>...
+        **kwargs,
+        ^^^^^^^^^
+    )
+    ^
+  File "C:\Users\edget\AppData\Local\Programs\Python\Python313\Lib\site-packages\langchain_core\language_models\llms.py", line 792, in _generate_helper
+    self._generate(
+    ~~~~~~~~~~~~~~^
+        prompts,
+        ^^^^^^^^
+    ...<3 lines>...
+        **kwargs,
+        ^^^^^^^^^
+    )
+    ^
+  File "C:\Users\edget\AppData\Local\Programs\Python\Python313\Lib\site-packages\langchain_core\language_models\llms.py", line 1547, in _generate
+    self._call(prompt, stop=stop, run_manager=run_manager, **kwargs)
+    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\edget\AppData\Local\Programs\Python\Python313\Lib\site-packages\langchain_huggingface\llms\huggingface_endpoint.py", line 312, in _call
+    response_text = self.client.text_generation(
+        prompt=prompt,
+        model=self.model,
+        **invocation_params,
+    )
+TypeError: InferenceClient.text_generation() got an unexpected keyword argument 'stop_sequence'. Did you mean 'stop_sequences'?

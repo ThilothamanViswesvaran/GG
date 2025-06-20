@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>University Chatbot</title>
+  <link rel="stylesheet" href="bot.css">
+  <meta name="user-select" content="text">
+</head>
+
+<body>
+  <!-- Floating Chatbot Icon -->
+  <div class="chatbot-icon" onclick="toggleChatbot()">
+    <img src="images/logo.png" alt="Chatbot">
+  </div>
+
+  <!-- Chatbot Container -->
+  <div class="chatbot-container" id="chatbotContainer">
+    <div class="chatbot-header">
+      <span>University Assistant</span>
+      <span class="chatbot-close" onclick="toggleChatbot()">×</span>
+    </div>
+    <div class="chatbot-body" id="chatbotBody">
+      <div class="chat-message bot-message">
+        Hello! I'm your university assistant. How can I help you today?
+      </div>
+      <div class="quick-links">
+        <button class="quick-link" onclick="sendQuickLink('What courses are offered?')">Courses</button>
+        <button class="quick-link" onclick="sendQuickLink('What is the admission process?')">Admissions</button>
+        <button class="quick-link" onclick="sendQuickLink('What facilities are available?')">Facilities</button>
+        <button class="quick-link" onclick="sendQuickLink('How to contact the university?')">Contact</button>
+      </div>
+    </div>
+    <div class="chatbot-input">
+      <input type="text" id="chatbotInput" placeholder="Ask me anything..."
+        onkeypress="if(event.key === 'Enter') sendChatbotMessage()">
+      <button onclick="sendChatbotMessage()">Send</button>
+    </div>
+  </div>
+
+  <script src="bot.js"></script>
+</body>
+
+</html>
